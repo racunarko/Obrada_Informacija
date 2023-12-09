@@ -1,0 +1,305 @@
+addpath(genpath('/Users/dominik/Desktop/Obrada informacija/Lab3/'))
+
+% Zadani parametar zadrzavanja istog stanja M
+m = 5;           
+
+% matrica pocetnih vjerojatnosti, P
+prior0=[    
+    1/6
+    1/3
+    1/2                 
+];
+
+% matrica vjerojatnosti prijelaza stanja, A
+transmat0=[
+4/5 1/5 0
+0   4/5 1/5            
+1/5 0   4/5
+];
+
+Q=size(prior0,1);
+
+% Prosjecne ucestalosti osmatranja pojedinih ishoda "1" do "6" za sve tri kocke u 40 bacanja
+B_count = [
+20  4   5   2   4   5
+5   4   20  5   3   3
+1   2   5   7   20  5            
+];
+
+br_bacanja = 40;
+
+% matrica vjerojatnosti osmatranja izlaznih simbola
+obsmat0 = B_count ./ br_bacanja;
+O=size(obsmat0,2);
+
+%%
+fprintf('2a zadatak\n')
+% dva niza duljine T simbola kojeg je generirao model L
+T = 41;          
+o1 = [ 3 6 6 4 5 1 2 3 5 4 4 5 5 3 1 6 1 5 3 5 5 5 4 5 5 5 6 5 1 6 1 3 3 3 3 3 6 3 4 1 3];           
+o2 = [ 2 2 3 5 3 6 3 4 4 4 4 1 4 6 1 4 2 6 4 1 4 3 2 5 6 6 6 4 6 6 2 6 6 3 4 4 4 2 3 4 2];           
+
+data = o1;
+ll1 = dhmm_logprob(data, prior0, transmat0, obsmat0);
+disp(ll1)
+
+data = o2;
+ll2 = dhmm_logprob(data, prior0, transmat0, obsmat0);
+disp(ll2);
+
+
+fprintf('2b zadatak\n')
+
+% izracunaj razliku log-izvjesnosti
+log_prob_diff = ll1 - ll2;
+
+% izracunaj omjer u exp obliku
+prob_ratio = exp(log_prob_diff);
+
+% koliko puta je drugi niz manje izvjestan od prvog u eksponencijalnom zapisu
+fprintf('Probability ratio (o2 is less likely than o1 by): %e times\n', prob_ratio);
+
+%%
+fprintf('3. zadatak\n')      
+
+data = o1;
+data2 = o2;
+if ~iscell(data)
+  data = num2cell(data, 2);
+  data2 = num2cell(data2, 2);
+end
+ncases = length(data);
+
+% Forward algorithm
+loglik = 0;
+errors = [];
+for m=1:ncases
+    obslik0 = multinomial_prob(data{m}, obsmat0);
+    obslik1 = multinomial_prob(data2{m}, obsmat0);
+    [alpha, beta, gamma, ll] = ...
+    fwdback(prior0, transmat0, obslik0, 'scaled', 0); 
+    if ll==-inf
+        errors = [errors m];
+    end
+  loglik = loglik + ll;
+end
+
+% Backward algorithm
+% beta = zeros(T, length(prior0)); % Initialize beta matrix
+% beta(T, :) = 1; % Initial step
+% 
+% for t = T-1:-1:1
+%     for i = 1:length(prior0)
+%         beta(t, i) = sum(transmat0(i, :) .* obsmat0(:, o1(t+1))' .* beta(t+1, :));
+%     end
+% end
+
+% Display the requested probabilities
+fprintf('Forward probability alpha_t(3) at t=26: %e\n', alpha(3, 26));
+fprintf('Backward probability beta_t(3) at t=11: %e\n', beta(3, 11));
+
+%%
+fprintf('4. zadatak\n')     
+% Najizvjesniji put
+vpath = viterbi_path(prior0, transmat0, obslik0);
+disp(vpath)
+
+%%
+fprintf('5. zadatak\n')          
+vpath1 = viterbi_path(prior0, transmat0, obslik0);
+vpath2 = viterbi_path(prior0, transmat0, obslik1);
+
+[ll_viterbi1, p1] = dhmm_logprob_path(prior0, transmat0, obslik0, vpath1);
+[ll_viterbi2, p2] = dhmm_logprob_path(prior0, transmat0, obslik1, vpath2);
+
+% Usporedba s ukupnim log-izvjesnostima
+razlika1 = ll1 - ll_viterbi1;
+razlika2 = ll2 - ll_viterbi2;
+
+fprintf('Razlika log-izvjesnosti za prvi niz (ukupno - Viterbi): %f\n', razlika1);
+fprintf('Razlika log-izvjesnosti za drugi niz (ukupno - Viterbi): %f\n', razlika2);
+
+
+%%
+fprintf('\n6.a zadatak\n')          
+constraint = 4; % prva cetiri simbola
+tmp = sum(alpha);
+fprintf('Likelyhood is %e\n', tmp(constraint))
+%%
+fprintf('6.b zadatak\n')
+vpath = viterbi_path(prior0, transmat0, obslik0(:, 1:constraint));
+[ll_viterbi, p] = dhmm_logprob_path(prior0, transmat0, obslik0(:, 1:constraint), vpath);
+udio_izvjesnosti = exp(ll_viterbi - log(tmp(constraint)));
+fprintf('Likelyhood ratio: %e\n', udio_izvjesnosti)
+%%
+fprintf('6.c zadatak\n')
+disp(vpath)
+%%
+fprintf('6.d zadatak\n')
+num_states = 3;     
+sequence_length = 4;
+total_paths = num_states^sequence_length;
+
+% Inicijalizacija matrice za sve puteve
+all_paths = zeros(total_paths, sequence_length);
+
+% Generiranje svih mogućih puteva
+counter = 1;
+for i = 1:num_states
+    for j = 1:num_states
+        for k = 1:num_states
+            for l = 1:num_states
+                all_paths(counter, :) = [i, j, k, l];
+                counter = counter + 1;
+            end
+        end
+    end
+end
+
+% Izračunavanje log-izvjesnosti za svaki put
+llm = zeros(total_paths,1); % Stupac za log-izvjesnosti
+for i = 1:total_paths
+    [llm(i), p] = dhmm_logprob_path(prior0, transmat0, obslik0(:, 1:sequence_length), all_paths(i,:));
+end;
+% Ispis log-izvjesnosti za svaki put
+disp(llm)
+fprintf('Pojedinacnih puteva stanja ima ')
+disp(total_paths)
+
+%%
+fprintf('\n6.e zadatak\n')
+% Brojanje puteva s nultom izvjesnošću
+broj_nemogucih_puteva = sum(isinf(llm));
+
+fprintf('Broj puteva koji imaju nultu izvjesnost: %d\n', broj_nemogucih_puteva);
+%%
+fprintf('6.f zadatak\n')
+% Sortiranje log-izvjesnosti od najizvjesnijih do najmanje izvjesnijih
+[sllm, illm] = sort(-llm);
+
+% Pretvaranje log-izvjesnosti u izvjesnosti i izračunavanje kumulativne sume
+kumulativna_suma = cumsum(exp(-sllm));
+
+% Ukupna suma izvjesnosti svih puteva
+ukupna_suma = sum(exp(llm));
+
+% Normiranje kumulativne sume na 1
+normirana_kumulativna_suma = kumulativna_suma / ukupna_suma;
+
+% Uzimanje kumulativne sume za prvih pet puteva
+udio_prvih_pet_puteva = normirana_kumulativna_suma(5);
+
+fprintf('Udio ukupne izvjesnosti uzduž prvih pet najizvjesnijih puteva: %e\n', udio_prvih_pet_puteva);
+
+%%
+fprintf('\n7.zadatak\n')    % mozda treba mijenjat
+
+% generiraj visestruki opservacijski niz:
+T = 186; % duljina svakog niza
+nex = 18; % broj opservacijskih nizova
+rng('default');
+data_180 = dhmm_sample(prior0, transmat0, obsmat0, nex, T);
+
+%%
+fprintf('\n8.a zadatak\n')  % ne treba mijenjat
+
+hm_180 = hist(data_180', [1 2 3 4 5 6]);
+
+for i = 1:6
+    fprintf('Broj osmatranja simbola %d: %d\n', i, hm_180(i));
+end
+
+%%
+fprintf('\n8.b zadatak\n')  % treba mijenjat
+
+% Stacionarna distribucija stanja
+A = transmat0;
+T = 1000; % Broj iteracija za konvergenciju
+pi_stac = ones(1, size(A, 1)) / size(A, 1);
+
+for t = 1:T
+    pi_stac = pi_stac * A;
+end
+
+% Izlazne vjerojatnosti osmatranja
+B = obsmat0;
+
+% Dugotrajne vjerojatnosti osmatranja
+p_o = zeros(1, size(B, 2));
+for i = 1:size(B, 2)
+    p_o(i) = sum(pi_stac .* B(:, i)');
+end
+
+% Ispis dugotrajne vjerojatnosti stanja 1 i izlaznog simbola 6
+fprintf('Dugotrajna vjerojatnost stanja 1: %f\n', pi_stac(1));
+fprintf('Dugotrajna vjerojatnost osmatranja izlaznog simbola 6: %f\n', p_o(6));
+
+%%
+fprintf('\n8.c zadatak\n')
+T = 186;                    % treba mijenjat
+a0=A; 
+for i=1:100, 
+    a0=a0*A; 
+end;
+expected_freq = a0(1,:)*B*T;
+
+hm = hist(data_180',[1 2 3 4 5 6]); %ocitamo n-ti stupac za n-tu sekvencu
+
+diff = double(max(abs(expected_freq/T-mean(hm')/T)));
+
+fprintf('Najveća apsolutna razlika: %e\n', diff);
+
+%%
+fprintf('\n9. zadatak\n');       % ne treba nista mijenjat
+
+loglik_values = zeros(1, nex); % Inicijalizacija niza za log-izvjesnosti
+
+for i = 1:nex
+    loglik_values(i) = dhmm_logprob(data_180(i,:), prior0, transmat0, obsmat0);
+end
+
+% Najveća, najmanja i srednja log-izvjesnost
+max_loglik = max(loglik_values);
+min_loglik = min(loglik_values);
+mean_loglik = mean(loglik_values);
+
+fprintf('Najveća log-izvjesnost: %f\n', max_loglik);
+fprintf('Najmanja log-izvjesnost: %f\n', min_loglik);
+fprintf('Srednja log-izvjesnost: %f\n', mean_loglik);
+
+%%
+fprintf('\n10. zadatak\n');            % ne treba nista mijenjat
+            
+rng('default');
+% initial guess of parameters
+prior1 = normalise(rand(Q,1));
+transmat1 = mk_stochastic(rand(Q,Q));
+obsmat1 = mk_stochastic(rand(Q,O));
+[LL1, prior1_trained, transmat1_trained, obsmat1_trained, iter1] = dhmm_em(data_180, prior1, transmat1, obsmat1, 'max_iter', 200, 'thresh', 1E-6);
+
+[LL2, prior2_trained, transmat2_trained, obsmat2_trained, iter2] = dhmm_em(data_180, prior0, transmat0, obsmat0, 'max_iter', 200, 'thresh', 1E-6);
+
+fprintf('Broj iteracija za prvi model: %d\n', iter1);
+fprintf('Broj iteracija za drugi model: %d\n', iter2);
+
+%%
+fprintf('\n11. zadatak\n');            % ne treba nista mijenjat
+
+% Ukupne log-izvjesnosti za svaki model
+total_loglik_zadani = 0;
+total_loglik_slucajni = 0;
+total_loglik_prvi_trenirani = 0;
+total_loglik_drugi_trenirani = 0;
+
+for i = 1:nex
+    total_loglik_zadani = total_loglik_zadani + dhmm_logprob(data_180(i,:), prior0, transmat0, obsmat0);
+    total_loglik_slucajni = total_loglik_slucajni + dhmm_logprob(data_180(i,:), prior1, transmat1, obsmat1);
+    total_loglik_prvi_trenirani = total_loglik_prvi_trenirani + dhmm_logprob(data_180(i,:), prior1_trained, transmat1_trained, obsmat1_trained);
+    total_loglik_drugi_trenirani = total_loglik_drugi_trenirani + dhmm_logprob(data_180(i,:), prior2_trained, transmat2_trained, obsmat2_trained);
+end
+
+fprintf('Ukupna log-izvjesnost za zadani model: %f\n', total_loglik_zadani);
+fprintf('Ukupna log-izvjesnost za slučajni model: %f\n', total_loglik_slucajni);
+fprintf('Ukupna log-izvjesnost za prvi trenirani model: %f\n', total_loglik_prvi_trenirani);
+fprintf('Ukupna log-izvjesnost za drugi trenirani model: %f\n', total_loglik_drugi_trenirani);
+
