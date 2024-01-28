@@ -1,0 +1,107 @@
+<!DOCTYPE MeshLabDocument>
+<MeshLabProject>
+ <MeshGroup>
+  <MLMesh idInFile="-1" filename="../../../Downloads/Garfield/2016-11-07T16-39-39_cleaned.ply" label="2016-11-07T16-39-39_cleaned.ply" visible="1">
+   <MLMatrix44>
+0.998946 0.0362418 -0.0281508 -18.118 -0.0351949 0.998701 0.036836 23.5196 0.0294492 -0.0358065 0.998925 -1.38056 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption pointSize="3" boxColor="234 234 234 255" pointColor="252 233 79 255" wireColor="64 64 64 255" wireWidth="1" solidColor="192 192 192 255">000111000000000000000100000001000000001010100000000100111010000111001101</RenderingOption>
+  </MLMesh>
+  <MLMesh idInFile="-1" filename="../../../Downloads/Garfield/2016-11-07T16-39-59_cleaned.ply" label="2016-11-07T16-39-59_cleaned.ply" visible="1">
+   <MLMatrix44>
+0.999043 0.0347548 -0.0265586 -16.8431 -0.0337518 0.998733 0.037327 24.0846 0.0278222 -0.0363949 0.99895 -1.61084 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption pointSize="3" boxColor="234 234 234 255" pointColor="252 233 79 255" wireColor="64 64 64 255" wireWidth="1" solidColor="192 192 192 255">000111000000000000000100000001000000001010100000000100111010000111001101</RenderingOption>
+  </MLMesh>
+  <MLMesh idInFile="-1" filename="../../../Downloads/Garfield/2016-11-07T16-40-33_cleaned.ply" label="2016-11-07T16-40-33_cleaned.ply" visible="1">
+   <MLMatrix44>
+0.778586 -0.0423085 0.626109 461.023 0.0188275 0.99885 0.0440834 31.8317 -0.627254 -0.0225347 0.778488 -222.014 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption pointSize="3" boxColor="234 234 234 255" pointColor="252 233 79 255" wireColor="64 64 64 255" wireWidth="1" solidColor="192 192 192 255">000111000000000000000100000001000000001010100000000100111010000111001101</RenderingOption>
+  </MLMesh>
+  <MLMesh idInFile="-1" filename="../../../Downloads/Garfield/2016-11-07T16-40-51_cleaned.ply" label="2016-11-07T16-40-51_cleaned.ply" visible="1">
+   <MLMatrix44>
+0.779559 -0.0416873 0.62494 460.225 0.0188501 0.998892 0.0431183 31.5956 -0.626045 -0.0218331 0.77948 -221.05 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption pointSize="3" boxColor="234 234 234 255" pointColor="252 233 79 255" wireColor="64 64 64 255" wireWidth="1" solidColor="192 192 192 255">000111000000000000000100000001000000001010100000000100111010000111001101</RenderingOption>
+  </MLMesh>
+  <MLMesh idInFile="-1" filename="../../../Downloads/Garfield/2016-11-07T16-41-41_cleaned.ply" label="2016-11-07T16-41-41_cleaned.ply" visible="1">
+   <MLMatrix44>
+0.152555 -0.109383 0.982223 637.475 0.0603975 0.99303 0.101206 83.9408 -0.986447 0.0438842 0.158098 -760.034 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption pointSize="3" boxColor="234 234 234 255" pointColor="252 233 79 255" wireColor="64 64 64 255" wireWidth="1" solidColor="192 192 192 255">000111000000000000000100000001000000001010100000000100111010000111001101</RenderingOption>
+  </MLMesh>
+  <MLMesh idInFile="-1" filename="../../../Downloads/Garfield/2016-11-07T16-41-58_cleaned.ply" label="2016-11-07T16-41-58_cleaned.ply" visible="1">
+   <MLMatrix44>
+0.150452 -0.111037 0.982362 637.353 0.0600176 0.992866 0.103033 85.9115 -0.986794 0.0434576 0.156042 -761.662 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption pointSize="3" boxColor="234 234 234 255" pointColor="252 233 79 255" wireColor="64 64 64 255" wireWidth="1" solidColor="192 192 192 255">000111000000000000000100000001000000001010100000000100111010000111001101</RenderingOption>
+  </MLMesh>
+  <MLMesh idInFile="-1" filename="../../../Downloads/Garfield/2016-11-07T16-44-16_cleaned.ply" label="2016-11-07T16-44-16_cleaned.ply" visible="1">
+   <MLMatrix44>
+-0.976209 0.0259668 0.21527 -133.421 0.0896576 0.952295 0.29171 228.174 -0.197426 0.304071 -0.931968 -1468.85 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption pointSize="3" boxColor="234 234 234 255" pointColor="252 233 79 255" wireColor="64 64 64 255" wireWidth="1" solidColor="192 192 192 255">000111000000000000000100000001000000001010100000000100111010000111001101</RenderingOption>
+  </MLMesh>
+  <MLMesh idInFile="-1" filename="../../../Downloads/Garfield/2016-11-07T16-44-41_cleaned.ply" label="2016-11-07T16-44-41_cleaned.ply" visible="1">
+   <MLMatrix44>
+-0.987544 0.0264878 0.155094 -178.446 0.0695487 0.957686 0.279285 217.165 -0.141133 0.286593 -0.9476 -1469.69 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption pointSize="3" boxColor="234 234 234 255" pointColor="252 233 79 255" wireColor="64 64 64 255" wireWidth="1" solidColor="192 192 192 255">000111000000000000000100000001000000001010100000000100111010000111001101</RenderingOption>
+  </MLMesh>
+  <MLMesh idInFile="-1" filename="../../../Downloads/Garfield/2016-11-07T16-45-27_cleaned.ply" label="2016-11-07T16-45-27_cleaned.ply" visible="1">
+   <MLMatrix44>
+-0.869799 0.117359 -0.479245 -623.283 -0.0461084 0.947717 0.315763 229.462 0.491246 0.296748 -0.818912 -1274 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption pointSize="3" boxColor="234 234 234 255" pointColor="252 233 79 255" wireColor="64 64 64 255" wireWidth="1" solidColor="192 192 192 255">000111000000000000000100000001000000001010100000000100111010000111001101</RenderingOption>
+  </MLMesh>
+  <MLMesh idInFile="-1" filename="../../../Downloads/Garfield/2016-11-07T16-46-23_cleaned.ply" label="2016-11-07T16-46-23_cleaned.ply" visible="1">
+   <MLMatrix44>
+-0.30534 0.195845 -0.931886 -887.721 -0.170216 0.951635 0.255768 166.005 0.936907 0.236718 -0.257237 -774.179 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption pointSize="3" boxColor="234 234 234 255" pointColor="252 233 79 255" wireColor="64 64 64 255" wireWidth="1" solidColor="192 192 192 255">000111000000000000000100000001000000001010100000000100111010000111001101</RenderingOption>
+  </MLMesh>
+  <MLMesh idInFile="-1" filename="../../../Downloads/Garfield/2016-11-07T16-46-54_cleaned.ply" label="2016-11-07T16-46-54_cleaned.ply" visible="1">
+   <MLMatrix44>
+-0.304694 0.201044 -0.93099 -886.657 -0.179579 0.947811 0.263448 170.301 0.935368 0.247457 -0.25269 -770.221 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption pointSize="3" boxColor="234 234 234 255" pointColor="252 233 79 255" wireColor="64 64 64 255" wireWidth="1" solidColor="192 192 192 255">000111000000000000000100000001000000001010100000000100111010000111001101</RenderingOption>
+  </MLMesh>
+  <MLMesh idInFile="-1" filename="../../../Downloads/Garfield/2016-11-07T16-47-36_cleaned.ply" label="2016-11-07T16-47-36_cleaned.ply" visible="1">
+   <MLMatrix44>
+0.346073 0.214442 -0.913372 -775.188 -0.220031 0.964928 0.143177 73.9598 0.912042 0.151421 0.381119 -292.001 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption pointSize="3" boxColor="234 234 234 255" pointColor="252 233 79 255" wireColor="64 64 64 255" wireWidth="1" solidColor="192 192 192 255">000111000000000000000100000001000000001010100000000100111010000111001101</RenderingOption>
+  </MLMesh>
+  <MLMesh idInFile="-1" filename="../../../Downloads/Garfield/2016-11-07T16-48-44_cleaned.ply" label="2016-11-07T16-48-44_cleaned.ply" visible="1">
+   <MLMatrix44>
+0.571734 0.19735 -0.79635 -586.786 -0.1863 0.976512 0.108245 63.1934 0.799007 0.086473 0.595072 -264.039 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption pointSize="3" boxColor="234 234 234 255" pointColor="252 233 79 255" wireColor="64 64 64 255" wireWidth="1" solidColor="192 192 192 255">000111000000000000000100000001000000001010100000000100111010000111001101</RenderingOption>
+  </MLMesh>
+  <MLMesh idInFile="-1" filename="../../../Downloads/Garfield/2016-11-07T16-49-12_cleaned.ply" label="2016-11-07T16-49-12_cleaned.ply" visible="1">
+   <MLMatrix44>
+0.518315 0.227357 -0.824414 -611.856 -0.29205 0.953115 0.0792365 27.6346 0.803776 0.199701 0.560414 -279.95 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption pointSize="3" boxColor="234 234 234 255" pointColor="252 233 79 255" wireColor="64 64 64 255" wireWidth="1" solidColor="192 192 192 255">000111000000000000000100000001000000001010100000000100111010000111001101</RenderingOption>
+  </MLMesh>
+  <MLMesh idInFile="-1" filename="LAB6 MESH.ply" label="2016-11-07T16-43-09_cleaned.ply" visible="1">
+   <MLMatrix44>
+-0.619245 -0.0835148 0.780744 388.583 0.0828806 0.98182 0.170759 146.964 -0.780813 0.17045 -0.601066 -1382.28 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption pointSize="3" boxColor="234 234 234 255" pointColor="252 233 79 255" wireColor="64 64 64 255" wireWidth="1" solidColor="192 192 192 255">000111000000000000000100000001000000001010100000000100111010000111001101</RenderingOption>
+  </MLMesh>
+  <MLMesh idInFile="-1" filename="../../../Downloads/Garfield/2016-11-07T16-43-25_cleaned.ply" label="2016-11-07T16-43-25_cleaned.ply" visible="1">
+   <MLMatrix44>
+-0.618695 -0.0838355 0.781146 389.049 0.0823167 0.9819 0.170579 147.096 -0.781307 0.169838 -0.600595 -1381.94 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption pointSize="3" boxColor="234 234 234 255" pointColor="252 233 79 255" wireColor="64 64 64 255" wireWidth="1" solidColor="192 192 192 255">000111000000000000000100000001000000001010100000000100111010000111001101</RenderingOption>
+  </MLMesh>
+ </MeshGroup>
+ <RasterGroup>
+  <MLRaster label="/var/folders/k7/qsmx1q395wlcbbbw943ct6mc0000gn/T/TemporaryItems/NSIRD_screencaptureui_o68QgH/Screenshot 2024-01-27 at 11.38.11.png">
+   <VCGCamera CenterPx="520 424" BinaryData="0" PixelSizeMm="0.0369161 0.0369161" ViewportPx="1041 848" CameraType="0" RotationMatrix="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 " LensDistortion="0 0" TranslationVector="162.463 29.9242 254.942 1" FocalMm="28.319365"/>
+   <Plane fileName="../../../../../var/folders/k7/qsmx1q395wlcbbbw943ct6mc0000gn/T/TemporaryItems/NSIRD_screencaptureui_o68QgH/Screenshot 2024-01-27 at 11.38.11.png" semantic="1"/>
+  </MLRaster>
+ </RasterGroup>
+</MeshLabProject>

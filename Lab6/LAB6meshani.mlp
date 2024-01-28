@@ -1,0 +1,17 @@
+<!DOCTYPE MeshLabDocument>
+<MeshLabProject>
+ <MeshGroup>
+  <MLMesh filename="Layers.ply" idInFile="-1" label="Merged Mesh" visible="1">
+   <MLMatrix44>
+1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption wireColor="64 64 64 255" pointSize="3" pointColor="252 233 79 255" solidColor="192 192 192 255" boxColor="234 234 234 255" wireWidth="1">000111010000000000000000000000000000000010100000000100111010110000001101</RenderingOption>
+  </MLMesh>
+ </MeshGroup>
+ <RasterGroup>
+  <MLRaster label="/var/folders/k7/qsmx1q395wlcbbbw943ct6mc0000gn/T/TemporaryItems/NSIRD_screencaptureui_o68QgH/Screenshot 2024-01-27 at 11.38.11.png">
+   <VCGCamera TranslationVector="162.463 29.9242 254.942 1" CenterPx="520 424" CameraType="0" RotationMatrix="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 " BinaryData="0" FocalMm="28.319365" LensDistortion="0 0" PixelSizeMm="0.0369161 0.0369161" ViewportPx="1041 848"/>
+   <Plane semantic="1" fileName="../../../../../var/folders/k7/qsmx1q395wlcbbbw943ct6mc0000gn/T/TemporaryItems/NSIRD_screencaptureui_o68QgH/Screenshot 2024-01-27 at 11.38.11.png"/>
+  </MLRaster>
+ </RasterGroup>
+</MeshLabProject>
